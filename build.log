@@ -1,0 +1,95 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 886B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:lts-alpine
+#3 DONE 0.7s
+
+#4 [runner 1/6] FROM docker.io/library/node:lts-alpine@sha256:7e227295e96f5b00aa79555ae166f50610940d888fc2e321cf36304cbd17d7d6
+#4 DONE 0.0s
+
+#5 [runner 2/6] WORKDIR /opt/app
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 2.15MB 1.1s done
+#6 DONE 1.3s
+
+#7 [deps 3/4] COPY package.json package-lock.json ./
+#7 CACHED
+
+#8 [deps 4/4] RUN npm install --frozen-lockfile
+#8 CACHED
+
+#9 [builder 3/5] COPY . .
+#9 DONE 5.5s
+
+#10 [builder 4/5] COPY --from=deps /opt/app/node_modules ./node_modules
+#10 DONE 6.4s
+
+#11 [builder 5/5] RUN npm run build
+#11 1.433 
+#11 1.433 > demo-app@0.1.0 build
+#11 1.433 > next build
+#11 1.433 
+#11 3.499 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#11 3.500 This information is used to shape Next.js' roadmap and prioritize features.
+#11 3.500 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#11 3.500 https://nextjs.org/telemetry
+#11 3.500 
+#11 3.755    ▲ Next.js 14.1.4
+#11 3.756 
+#11 3.888    Creating an optimized production build ...
+#11 30.41  ✓ Compiled successfully
+#11 30.42    Linting and checking validity of types ...
+#11 36.02    Collecting page data ...
+#11 40.77    Generating static pages (0/5) ...
+#11 41.69    Generating static pages (1/5) 
+#11 43.73    Generating static pages (2/5) 
+#11 44.21    Generating static pages (3/5) 
+#11 44.22  ✓ Generating static pages (5/5) 
+#11 44.47    Finalizing page optimization ...
+#11 44.47    Collecting build traces ...
+#11 65.14 
+#11 65.22 Route (app)                              Size     First Load JS
+#11 65.22 ┌ ○ /                                    5.22 kB        89.5 kB
+#11 65.22 └ ○ /_not-found                          882 B          85.2 kB
+#11 65.22 + First Load JS shared by all            84.3 kB
+#11 65.22   ├ chunks/69-1656e2cc92fa6e80.js        29 kB
+#11 65.22   ├ chunks/fd9d1056-d03af0e963d7a2f3.js  53.4 kB
+#11 65.22   └ other shared chunks (total)          1.87 kB
+#11 65.22 
+#11 65.22 
+#11 65.22 ○  (Static)  prerendered as static content
+#11 65.22 
+#11 65.73 npm notice 
+#11 65.73 npm notice New patch version of npm available! 10.5.0 -> 10.5.2
+#11 65.73 npm notice Changelog: <https://github.com/npm/cli/releases/tag/v10.5.2>
+#11 65.73 npm notice Run `npm install -g npm@10.5.2` to update!
+#11 65.74 npm notice 
+#11 DONE 66.4s
+
+#12 [runner 3/6] COPY --from=builder /opt/app/next.config.mjs ./
+#12 DONE 0.2s
+
+#13 [runner 4/6] COPY --from=builder /opt/app/public ./public
+#13 DONE 0.0s
+
+#14 [runner 5/6] COPY --from=builder /opt/app/.next ./.next
+#14 DONE 0.5s
+
+#15 [runner 6/6] COPY --from=builder /opt/app/node_modules ./node_modules
+#15 DONE 9.4s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 2.5s done
+#16 writing image sha256:8c1c12bfc8e1f8f4d47c75ad4c85961af0d1cc78abfca3581e29770dc1c20132 done
+#16 naming to docker.io/iluxav/next-demo:v3 done
+#16 DONE 2.5s
